@@ -32,26 +32,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd source_repo
-
           git remote add github \
             https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
 
-          echo "⬆️ Pushing exact AOSP to android17-release..."
-
-          git push github \
-            android17-release:android17-release \
-            --force
-
+          echo "⬆️  Pushing exact AOSP to android17-release..."
+          git push github android17-release:android17-release --force
           echo "✅ android17-release branch = Pure AOSP now!"
 
       # ── Summary ───────────────────────────────────────────
       - name: 📋 Summary
         run: |
           cd source_repo
-
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "  ✅ Ho gaya bhai!"
-          echo "  android17-release branch: Pure AOSP only"
+          echo "  ✅  Ho gaya bhai!"
+          echo "  android17-release branch: Pure AOSP only (kuch extra nahi)"
           echo "  Total Commits: $(git log --oneline | wc -l)"
           echo "  Latest       : $(git log -1 --format='%h - %s')"
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
