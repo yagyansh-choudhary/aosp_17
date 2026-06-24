@@ -1,13 +1,15 @@
 name: Sync e2fsprogs from AOSP
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 0'   # Har Sunday raat 12 baje
 
 permissions:
   contents: write
-  workflows: write
 
 jobs:
   sync-e2fsprogs:
